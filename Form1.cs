@@ -17,8 +17,25 @@ namespace BuntingBrowser
             InitializeComponent();
         }
 
+        private void textbox1_Keydown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                navigate();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            navigate();
+        }
+        
+        private void navigate()
+        {
+            if(!textBox1.StartsWith("http://"))
+            {
+                textBox1 = "http://"+textBox1.Text;
+            }
             webBrowser1.Navigate(textBox1.Text);
         }
     }
