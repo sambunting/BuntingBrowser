@@ -35,6 +35,8 @@ namespace BuntingBrowser
             button1.Enabled = false;
             textBox1.Enabled = false;
 
+            toolStripStatusLabel1.Text = "Navigation Started";
+
             if (!textBox1.Text.StartsWith("http://"))
             {
                 textBox1.Text = "http://" + textBox1.Text;
@@ -47,6 +49,22 @@ namespace BuntingBrowser
         {
             button1.Enabled = true;
             textBox1.Enabled = true;
+            toolStripStatusLabel1.Text = "Navigation Complete";
+        }
+
+        private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            if (e.CurrentProgress > 0 && e.MaximumProgress > 0) {
+                int percentage = (int)(e.CurrentProgress * 100 / e.MaximumProgress);
+
+                if (percentage <= 100) {
+                    toolStripProgressBar1.ProgressBar.Value = percentage;
+                }
+            }
+            else
+            {
+                toolStripProgressBar1.ProgressBar.Value = 0;
+            }
         }
     }
 }
