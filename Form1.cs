@@ -17,7 +17,7 @@ namespace BuntingBrowser
             InitializeComponent();
         }
 
-        private void textbox1_Keydown(object sender, KeyEventArgs e)
+        private void textBox1_Keydown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
@@ -32,9 +32,9 @@ namespace BuntingBrowser
         
         private void navigate()
         {
-            if(!textBox1.StartsWith("http://"))
+            if (!textBox1.Text.StartsWith("http://"))
             {
-                textBox1 = "http://"+textBox1.Text;
+                textBox1.Text = "http://" + textBox1.Text;
             }
             webBrowser1.Navigate(textBox1.Text);
         }

@@ -42,6 +42,7 @@
             this.textBox1.Size = new System.Drawing.Size(1056, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "http://";
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_Keydown);
             // 
             // button1
             // 
@@ -74,7 +75,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "BuntingBrowser";
             this.ResumeLayout(false);
             this.PerformLayout();
 
