@@ -32,11 +32,21 @@ namespace BuntingBrowser
         
         private void navigate()
         {
+            button1.Enabled = false;
+            textBox1.Enabled = false;
+
             if (!textBox1.Text.StartsWith("http://"))
             {
                 textBox1.Text = "http://" + textBox1.Text;
             }
+            
             webBrowser1.Navigate(textBox1.Text);
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            button1.Enabled = true;
+            textBox1.Enabled = true;
         }
     }
 }
