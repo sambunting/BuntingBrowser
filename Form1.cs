@@ -50,6 +50,7 @@ namespace BuntingBrowser
             button1.Enabled = true;
             textBox1.Enabled = true;
             toolStripStatusLabel1.Text = "Navigation Complete";
+            textBox1.Text = webBrowser1.Url.AbsoluteUri;
         }
 
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
@@ -65,6 +66,11 @@ namespace BuntingBrowser
             {
                 toolStripProgressBar1.ProgressBar.Value = 0;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            navigate();
         }
     }
 }
