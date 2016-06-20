@@ -40,8 +40,9 @@ namespace BuntingBrowser
             if (!textBox1.Text.StartsWith("http://"))
             {
                 textBox1.Text = "http://" + textBox1.Text;
+            } else {
             }
-            
+
             webBrowser1.Navigate(textBox1.Text);
         }
 
@@ -51,6 +52,15 @@ namespace BuntingBrowser
             textBox1.Enabled = true;
             toolStripStatusLabel1.Text = "Navigation Complete";
             textBox1.Text = webBrowser1.Url.AbsoluteUri;
+
+            if (webBrowser1.Url.AbsoluteUri.StartsWith("https://"))
+            {
+                textBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#AED581");
+            }
+            else
+            {
+                textBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+            }
         }
 
         private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
