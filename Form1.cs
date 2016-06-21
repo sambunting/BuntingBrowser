@@ -82,5 +82,19 @@ namespace BuntingBrowser
         {
             navigate();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (webBrowser1.CanGoBack) {
+                webBrowser1.GoBack();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (webBrowser1.CanGoForward) {
+                webBrowser1.GoForward();
+            }
+        }
     }
 }
