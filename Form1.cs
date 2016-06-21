@@ -12,9 +12,13 @@ namespace BuntingBrowser
 {
     public partial class Form1 : Form
     {
+        public string homepage = "http://bing.com";
+
         public Form1()
         {
             InitializeComponent();
+
+            webBrowser1.Navigate(homepage);
         }
 
         private void textBox1_Keydown(object sender, KeyEventArgs e)
