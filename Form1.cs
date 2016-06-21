@@ -14,6 +14,15 @@ namespace BuntingBrowser
     {
         public string homepage = "http://bing.com";
 
+        public void saveHome(string home)//have a buttonsave the furrent webpageand pass the url to this method. im on my phone rihht no so sorry for any capitilisation errors etc.
+        {
+            System.IO.File.WriteAllText(System.IO.Directory.GetCurrentDirectory()+"homepage.txt", home);
+        }
+        public string getHome()//have a home button callwebbrowser.navigate(getHome);
+        {
+            return System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory()+"homepage.txt");
+        }
+
         public Form1()
         {
             InitializeComponent();
