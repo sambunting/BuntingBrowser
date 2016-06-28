@@ -105,5 +105,10 @@ namespace BuntingBrowser
         {
             Application.Exit();
         }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            webBrowser1.ShowSaveAsDialog();
+        }
     }
 }
