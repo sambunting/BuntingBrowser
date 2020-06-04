@@ -7,13 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BuntingBrowser
 {
     public partial class Form1 : Form
     {
-        public string homepage = "http://bing.com";
-
+        public void setSettings(string settings)//Alternatively, use an INI file. There's a good DLL file I could give you to use it instead. Really easy to use and whatnot
+        {
+            File.WriteAllText(Directory.GetCurrentDirectory()+"user.profile", settings); //Of course, change name to whatever
+        }
+        
+        /* HomeButton Method
+        {
+            webBrowser1.Navigate(getSettings("home"));
+        }
+        */
+        
+        /* HomeButtonSet Methd
+        {
+            setSettings(webBrowser1.url.toString()); //Of course, fix the .url as it's probably not correct.
+        }
+        
+        */
+        
+        public string getSettings(string setting)
+        {
+            if(setting.equals("home"))
+            {
+                return File.ReadAllText(Directory.GetCurrentDirectory()+"user.profile");
+            }
+            return "";
+        }
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +73,15 @@ namespace BuntingBrowser
             }
 
             webBrowser1.Navigate(textBox1.Text);
+        }
+
+        private void webBrowser1_KeyDown(object sender, KeyEventArgs e)  //Add this in form1.designer
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                webBrowser1.Navigate(webBrowser1.url.toString()); //Fix whatever URL is supposed to be.
+                // Try to see if there's a webBrowser1.Refresh or Reload. Obviously I can't tell ATM.
+            }
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
